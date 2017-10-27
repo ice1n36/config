@@ -3,7 +3,7 @@ syntax on
 
 " vundle requirements
 set nocompatible
-filetype off 
+filetype off
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.config/nvim/bundle/Vundle.vim
@@ -30,11 +30,20 @@ Plugin 'scrooloose/syntastic'
 " c/c++ header guard helper
 Plugin 'drmikehenry/vim-headerguard'
 
+" NOTE: Disabled android/java plugins bc juice not worth squeeze for now
 " android vim plugin
-Plugin 'hsanson/vim-android'
+" Plugin 'hsanson/vim-android'
 
 " java completion
-Plugin 'artur-shaik/vim-javacomplete2'
+" Plugin 'artur-shaik/vim-javacomplete2'
+
+" ctrl-p
+Plugin 'ctrlpvim/ctrlp.vim'
+
+" source/header switching
+Plugin 'a.vim'
+
+Plugin 'rdnetto/YCM-Generator'
 
 Plugin 'dkprice/vim-easygrep'
 
@@ -44,6 +53,9 @@ filetype plugin indent on    " required
 
 " YouCompleteMe settings
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+let g:ycm_confirm_extra_conf = 0
+"Uncomment when ready
+" let g:ycm_global_ycm_extra_conf = "~/.config/nvim/.ycm_extra_conf.py"
 
 " Smarter tab line (airline setting)
 let g:airline#extensions#tabline#enabled = 1
@@ -72,6 +84,7 @@ set number        " always show line numbers
 
 " leader mappings
 nnoremap <Leader>ff :FZF<CR>
+nnoremap <Leader>hh :nohl<CR>
 
 map <C-n> :NERDTreeToggle<CR>
 
@@ -98,5 +111,29 @@ call plug#end()
 let g:deoplete#enable_at_startup = 1
 
 " Required:
+set runtimepath+=~/.vim/bundle/neobundle.vim/
+
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" My Bundles here:
+" Refer to |:NeoBundle-examples|.
+" Note: You don't set neobundle setting in .gvimrc!
+
+call neobundle#end()
+" Required:
 filetype plugin indent on
 
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+
+set rtp+=/usr/local/opt/fzf
+
+" neovim with python https://ricostacruz.com/til/neovim-with-python-on-osx
+let g:python2_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'

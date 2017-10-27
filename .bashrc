@@ -59,3 +59,10 @@ fi
 
 #ADDED BY 010 EDITOR
 export PATH="$PATH:/Applications/010 Editor.app/Contents/CmdLine"
+source ~/.gradle/caches/okbuck/buck-completion.bash
+export HOMEBREW_NO_SANDBOX=1
+export PATH=/usr/local/opt/python/libexec/bin:/Users/tngo/.nvm/v0.10.32/bin:/opt/android-ndk:/opt/android-sdk/build-tools/24.0.1:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/Users/tngo/bin:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/usr/local/munki:/Applications/Wireshark.app/Contents/MacOS:/Users/tngo/gocode/bin:/opt/jtool
+export HOMEBREW_NO_SANDBOX=1
+export PATH=/usr/local/opt/python/libexec/bin:/Users/tngo/.nvm/v0.10.32/bin:/opt/android-ndk:/opt/android-sdk/build-tools/24.0.1:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/Users/tngo/bin:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/usr/local/munki:/Applications/Wireshark.app/Contents/MacOS:/Users/tngo/gocode/bin:/opt/jtool
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
