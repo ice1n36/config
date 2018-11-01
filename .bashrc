@@ -11,13 +11,15 @@ export LSCOLORS=Exfxcxdxbxegedabagacad
 export ANDROID_BUILD_TOOLS_VER=24.0.1
 
 export ANDROID_HOME=/opt/android-sdk
+export ANDROID_SDK=$ANDROID_HOME
+export ANDROID_SDK_ROOT=$ANDROID_SDK
 
 export PATH=$ANDROID_HOME/tools:$PATH
 export PATH=$ANDROID_HOME/platform-tools:$PATH
 export PATH=$ANDROID_HOME/build-tools/$ANDROID_BUILD_TOOLS_VER:$PATH
 
 # Android NDK
-export ANDROID_NDK=/opt/android-ndk
+export ANDROID_NDK=/usr/local/share/android-ndk
 export ANDROID_NDK_HOME=$ANDROID_NDK
 export PATH=$ANDROID_NDK:$PATH
 
@@ -61,8 +63,8 @@ fi
 export PATH="$PATH:/Applications/010 Editor.app/Contents/CmdLine"
 source ~/.gradle/caches/okbuck/buck-completion.bash
 export HOMEBREW_NO_SANDBOX=1
-export PATH=/usr/local/opt/python/libexec/bin:/Users/tngo/.nvm/v0.10.32/bin:/opt/android-ndk:/opt/android-sdk/build-tools/24.0.1:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/Users/tngo/bin:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/usr/local/munki:/Applications/Wireshark.app/Contents/MacOS:/Users/tngo/gocode/bin:/opt/jtool
+export PATH=/usr/local/opt/python/libexec/bin:/Users/tngo/.nvm/v0.10.32/bin:/Users/tngo/bin:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/usr/local/munki:/Applications/Wireshark.app/Contents/MacOS:/Users/tngo/gocode/bin:/opt/jtool
 export HOMEBREW_NO_SANDBOX=1
-export PATH=/usr/local/opt/python/libexec/bin:/Users/tngo/.nvm/v0.10.32/bin:/opt/android-ndk:/opt/android-sdk/build-tools/24.0.1:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/Users/tngo/bin:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/usr/local/munki:/Applications/Wireshark.app/Contents/MacOS:/Users/tngo/gocode/bin:/opt/jtool
+export PATH=/usr/local/opt/python/libexec/bin:/Users/tngo/.nvm/v0.10.32/bin:/Users/tngo/bin:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/usr/local/munki:/Applications/Wireshark.app/Contents/MacOS:/Users/tngo/gocode/bin:/opt/jtool
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -1,6 +1,9 @@
 colorscheme molokai
 syntax on
 
+" for neovim mouse scrolling
+set mouse=a
+
 " vundle requirements
 set nocompatible
 filetype off
@@ -40,6 +43,9 @@ Plugin 'drmikehenry/vim-headerguard'
 " ctrl-p
 Plugin 'ctrlpvim/ctrlp.vim'
 
+" greppy goodness (Ag support)
+Plugin 'grep.vim'
+
 " source/header switching
 Plugin 'a.vim'
 
@@ -47,6 +53,11 @@ Plugin 'rdnetto/YCM-Generator'
 
 Plugin 'dkprice/vim-easygrep'
 
+Plugin 'vimwiki/vimwiki'
+
+Plugin 'kelwin/vim-smali'
+
+Plugin 'jeetsukumaran/vim-buffergator'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -85,6 +96,7 @@ set number        " always show line numbers
 " leader mappings
 nnoremap <Leader>ff :FZF<CR>
 nnoremap <Leader>hh :nohl<CR>
+nnoremap <Leader>aa :Ag<CR>
 
 map <C-n> :NERDTreeToggle<CR>
 
@@ -103,8 +115,10 @@ call plug#begin()
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 
 " dark powered completion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
+" some golang powers
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 " Use deoplete.

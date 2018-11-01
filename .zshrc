@@ -4,20 +4,25 @@ export CLICOLOR=1
 # coloring style
 export LSCOLORS=Exfxcxdxbxegedabagacad
 
+# npm install fix: https://code.uberinternal.com/w/on_going_learning_best_practices_and_reference/fixnpm/
+export GIT_SSH=/usr/local/bin/npmssh
+
 ##
 # Android SDK
 ##
 
-export ANDROID_BUILD_TOOLS_VER=24.0.1
+export ANDROID_BUILD_TOOLS_VER=27.0.3
 
 export ANDROID_HOME=/opt/android-sdk
+export ANDROID_SDK=$ANDROID_HOME
+export ANDROID_SDK_ROOT=$ANDROID_SDK
 
 export PATH=$ANDROID_HOME/tools:$PATH
 export PATH=$ANDROID_HOME/platform-tools:$PATH
 export PATH=$ANDROID_HOME/build-tools/$ANDROID_BUILD_TOOLS_VER:$PATH
 
 # Android NDK
-export ANDROID_NDK=/opt/android-ndk
+export ANDROID_NDK=/usr/local/share/android-ndk
 export ANDROID_NDK_HOME=$ANDROID_NDK
 export PATH=$ANDROID_NDK:$PATH
 
@@ -26,6 +31,10 @@ export PATH=$PATH:/opt/jtool
 
 # Ensureit shitz
 export ENSUREIT_DIR=/opt/ensureit/ensureit-current
+
+# Setting fd as the default source for fzf
+# so it respects things like .gitignore
+export FZF_DEFAULT_COMMAND='fd --type f'
 
 # some common used alias'
 alias ll='ls -lG'
@@ -44,7 +53,8 @@ alias vim="nvim"
 alias vi="nvim"
 alias vimdiff='nvim -d'
 alias vf='vim $(fzf)'
-alias grep='grep -n --color=always'
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+#alias grep='grep -n --color=always'
 alias lpass-onelogin='lpass show --password OneLogin | sed 's/\r//g' | pbcopy'
 
 # neovim stuffs
@@ -60,7 +70,7 @@ export ZSH=/Users/tngo/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="bira"
+ZSH_THEME="bira-tngo"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -143,3 +153,6 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/usr/local/sbin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+brew analytics off 2>&1 >/dev/null
+[ -r /Users/tngo/.profile_devstats ] && . /Users/tngo/.profile_devstats
+[ -r /Users/tngo/.profile_lda ] && . /Users/tngo/.profile_lda
