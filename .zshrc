@@ -56,8 +56,8 @@ alias ndk-objcopy='$ANDROID_NDK/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-
 # neovim stuffs
 export EDITOR=nvim
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
+source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=~/.zsh-syntax-highlighting/highlighters
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
