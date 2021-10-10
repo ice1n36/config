@@ -60,14 +60,12 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/tngo/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
 ZSH_THEME="bira-tngo"
-# ZSH_THEME="bira"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
