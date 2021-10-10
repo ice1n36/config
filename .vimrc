@@ -33,31 +33,22 @@ Plugin 'scrooloose/syntastic'
 " c/c++ header guard helper
 Plugin 'drmikehenry/vim-headerguard'
 
-" NOTE: Disabled android/java plugins bc juice not worth squeeze for now
-" android vim plugin
-" Plugin 'hsanson/vim-android'
-
-" java completion
-" Plugin 'artur-shaik/vim-javacomplete2'
-
-" ctrl-p
-Plugin 'ctrlpvim/ctrlp.vim'
-
-" greppy goodness (Ag support)
-Plugin 'grep.vim'
-
 " source/header switching
 Plugin 'a.vim'
-
-Plugin 'rdnetto/YCM-Generator'
-
-Plugin 'dkprice/vim-easygrep'
 
 Plugin 'vimwiki/vimwiki'
 
 Plugin 'kelwin/vim-smali'
 
 Plugin 'jeetsukumaran/vim-buffergator'
+
+" fuzzy finder
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+
+" golang
+Plugin 'fatih/vim-go'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -65,6 +56,7 @@ filetype plugin indent on    " required
 " YouCompleteMe settings
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_show_diagnostics_ui = 0
 "Uncomment when ready
 " let g:ycm_global_ycm_extra_conf = "~/.config/nvim/.ycm_extra_conf.py"
 
@@ -96,7 +88,10 @@ set number        " always show line numbers
 " leader mappings
 nnoremap <Leader>ff :FZF<CR>
 nnoremap <Leader>hh :nohl<CR>
-nnoremap <Leader>aa :Ag<CR>
+nnoremap <Leader>aa :Rg<CR>
+" hidden leader mappings
+" <Leader> cc is for single line commenting (from nerdcommenter)
+" <Leader> cn is for nested commenting (from nerdcommenter)
 
 map <C-n> :NERDTreeToggle<CR>
 
@@ -108,46 +103,25 @@ set splitright
 " set relative line numbers
 set rnu
 
-" vim-plugs
-call plug#begin()
-
-" fzf vim wrapper
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-
-" dark powered completion
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-" some golang powers
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-call plug#end()
-
 " Use deoplete.
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 
-" Required:
-set runtimepath+=~/.vim/bundle/neobundle.vim/
-
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" My Bundles here:
-" Refer to |:NeoBundle-examples|.
-" Note: You don't set neobundle setting in .gvimrc!
-
-call neobundle#end()
 " Required:
 filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
 
 set rtp+=/usr/local/opt/fzf
 
 " neovim with python https://ricostacruz.com/til/neovim-with-python-on-osx
-let g:python2_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python2_host_prog = '/Users/tngo/.pyenv/shims/python2'
+let g:python3_host_prog = '/Users/tngo/.pyenv/shims/python3'
+
+
+" Some fzf commands
+" :Rg
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg -L --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
+let g:syntastic_cpp_checkers = []
+let g:syntastic_c_checkers = []

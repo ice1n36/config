@@ -1,11 +1,7 @@
-# enable coloring in terminal
 export CLICOLOR=1
 
 # coloring style
 export LSCOLORS=Exfxcxdxbxegedabagacad
-
-# npm install fix: https://code.uberinternal.com/w/on_going_learning_best_practices_and_reference/fixnpm/
-export GIT_SSH=/usr/local/bin/npmssh
 
 ##
 # Android SDK
@@ -22,19 +18,19 @@ export PATH=$ANDROID_HOME/platform-tools:$PATH
 export PATH=$ANDROID_HOME/build-tools/$ANDROID_BUILD_TOOLS_VER:$PATH
 
 # Android NDK
-export ANDROID_NDK=/usr/local/share/android-ndk
+export ANDROID_NDK_ROOT=/opt/android-ndk
+export ANDROID_NDK=$ANDROID_NDK_ROOT
 export ANDROID_NDK_HOME=$ANDROID_NDK
 export PATH=$ANDROID_NDK:$PATH
+# put this behind path so we are after system things in /usr/bin (e.g. /usr/bin/clang vs the clang in the ndk)
+export PATH=$PATH:$ANDROID_NDK/toolchains/llvm/prebuilt/darwin-x86_64/bin
 
 # Jtool
 export PATH=$PATH:/opt/jtool
 
-# Ensureit shitz
-export ENSUREIT_DIR=/opt/ensureit/ensureit-current
-
 # Setting fd as the default source for fzf
 # so it respects things like .gitignore
-export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_DEFAULT_COMMAND='rg --files --hidden -L'
 
 # some common used alias'
 alias ll='ls -lG'
@@ -54,8 +50,8 @@ alias vi="nvim"
 alias vimdiff='nvim -d'
 alias vf='vim $(fzf)'
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-#alias grep='grep -n --color=always'
-alias lpass-onelogin='lpass show --password OneLogin | sed 's/\r//g' | pbcopy'
+alias ndk-readelf='$ANDROID_NDK/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-readelf'
+alias ndk-objcopy='$ANDROID_NDK/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-objcopy'
 
 # neovim stuffs
 export EDITOR=nvim
@@ -71,6 +67,7 @@ export ZSH=/Users/tngo/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
 ZSH_THEME="bira-tngo"
+# ZSH_THEME="bira"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -114,7 +111,10 @@ ZSH_THEME="bira-tngo"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git adb arcanist git-prompt osx gradle chucknorris colorize colored-man-pages cp encode64 web-search brew)
+plugins=(git adb arcanist git-prompt osx gradle colorize colored-man-pages cp encode64 web-search brew)
+
+# see https://github.com/ohmyzsh/ohmyzsh/issues/9262
+ZSH_DISABLE_COMPFIX=true 
 
 source $ZSH/oh-my-zsh.sh
 
@@ -151,8 +151,25 @@ source $ZSH/oh-my-zsh.sh
 #chuck_cow
 
 export PATH="/usr/local/sbin:$PATH"
+export PATH="/opt/usr/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 brew analytics off 2>&1 >/dev/null
 [ -r /Users/tngo/.profile_devstats ] && . /Users/tngo/.profile_devstats
 [ -r /Users/tngo/.profile_lda ] && . /Users/tngo/.profile_lda
+
+# for fzf
+# fd - cd to selected directory
+fd() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
+}
+
+# pyenv stuff
+export PATH=$(pyenv root)/shims:$PATH
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+export PATH="/usr/local/opt/binutils/bin:$PATH"
