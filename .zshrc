@@ -50,6 +50,7 @@ alias vf='vim $(fzf)'
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 alias ndk-readelf='$ANDROID_NDK/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-readelf'
 alias ndk-objcopy='$ANDROID_NDK/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-objcopy'
+alias whatismyip="curl -s http://checkip.dyndns.org/ | sed 's/[a-zA-Z<>/ :]//g'"
 
 # neovim stuffs
 export EDITOR=nvim
@@ -59,6 +60,9 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=~/.zsh-syntax-highlighting/highlighters
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
+ZSH_THEME="bira-tngo"
+source $ZSH/oh-my-zsh.sh
+
 
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/opt/usr/bin:$PATH"
